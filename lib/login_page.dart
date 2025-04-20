@@ -29,11 +29,7 @@ class _LoginPageState extends State<LoginPage> {
     }
 
     try {
-      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-      // Navigate to home screen upon successful login
+      await _auth.signInWithEmailAndPassword(email: email, password: password);
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => HomePage()),
@@ -85,136 +81,150 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: true,
+      resizeToAvoidBottomInset: false,
       backgroundColor: const Color(0xFFD4E9F1),
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Colors.green, Color.fromARGB(255, 29, 221, 163)],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-        ),
-        child: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(30.0),
-                    bottomRight: Radius.circular(30.0),
-                  ),
-                  child: SizedBox(
-                    height: 200.0,
-                    width: double.infinity,
-                    child: Image.asset(
-                      'assets/Images/Exam2.png',
-                      fit: BoxFit.cover,
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return Container(
+            height: constraints.maxHeight,
+            width: constraints.maxWidth,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Colors.green, Color.fromARGB(255, 29, 221, 163)],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+            ),
+            child: SafeArea(
+              child: SingleChildScrollView(
+                padding: EdgeInsets.only(
+                  bottom: MediaQuery.of(context).viewInsets.bottom,
+                ),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                  child: IntrinsicHeight(
+                    child: Column(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(30.0),
+                            bottomRight: Radius.circular(30.0),
+                          ),
+                          child: SizedBox(
+                            height: 200.0,
+                            width: double.infinity,
+                            child: Image.asset(
+                              'assets/Images/Exam2.png',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                Text(
+                                  'Continue with',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 16.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                SizedBox(height: 10.0),
+                                GestureDetector(
+                                  onTap: _signInWithGoogle,
+                                  child: CircleAvatar(
+                                    radius: 25.0,
+                                    backgroundColor: Colors.white,
+                                    child: Image.asset(
+                                      'assets/Images/google.png',
+                                      height: 30.0,
+                                      width: 30.0,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: 10.0),
+                                Text(
+                                  'OR Log in with Email',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 16.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                SizedBox(height: 20.0),
+                                TextField(
+                                  controller: _emailController,
+                                  decoration: InputDecoration(
+                                    labelText: 'Email',
+                                    border: OutlineInputBorder(),
+                                    prefixIcon: Icon(Icons.email),
+                                  ),
+                                  keyboardType: TextInputType.emailAddress,
+                                ),
+                                SizedBox(height: 10.0),
+                                TextField(
+                                  controller: _passwordController,
+                                  decoration: InputDecoration(
+                                    labelText: 'Password',
+                                    border: OutlineInputBorder(),
+                                    prefixIcon: Icon(Icons.lock),
+                                  ),
+                                  obscureText: true,
+                                ),
+                                if (_error != null)
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 8.0),
+                                    child: Text(
+                                      _error!,
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(color: Colors.red),
+                                    ),
+                                  ),
+                                SizedBox(height: 20.0),
+                                ElevatedButton(
+                                  onPressed: _signInWithEmailAndPassword,
+                                  child: Text('Log In with Email'),
+                                  style: ElevatedButton.styleFrom(
+                                    padding: EdgeInsets.symmetric(vertical: 12.0),
+                                  ),
+                                ),
+                                SizedBox(height: 20.0),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text("Can't log in? "),
+                                    TextButton(
+                                      onPressed: _navigateToResetPassword,
+                                      child: Text('Reset password'),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text("Don't have an account? "),
+                                    TextButton(
+                                      onPressed: _navigateToRegister,
+                                      child: Text('Create an account'),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Text(
-                        'Continue with',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      SizedBox(height: 10.0),
-                      GestureDetector(
-                        onTap: _signInWithGoogle,
-                        child: CircleAvatar(
-                          radius: 25.0,
-                          backgroundColor: Colors.white,
-                          child: Image.asset(
-                            'assets/Images/google.png',
-                            height: 30.0,
-                            width: 30.0,
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 10.0),
-                      Text(
-                        'OR Log in with Email',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      SizedBox(height: 20.0),
-                      TextField(
-                        controller: _emailController,
-                        decoration: InputDecoration(
-                          labelText: 'Email',
-                          border: OutlineInputBorder(),
-                          prefixIcon: Icon(Icons.email),
-                        ),
-                        keyboardType: TextInputType.emailAddress,
-                      ),
-                      SizedBox(height: 10.0),
-                      TextField(
-                        controller: _passwordController,
-                        decoration: InputDecoration(
-                          labelText: 'Password',
-                          border: OutlineInputBorder(),
-                          prefixIcon: Icon(Icons.lock),
-                        ),
-                        obscureText: true,
-                      ),
-                      SizedBox(height: 10.0),
-                      if (_error != null)
-                        Padding(
-                          padding: const EdgeInsets.only(top: 8.0),
-                          child: Text(
-                            _error!,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(color: Colors.red),
-                          ),
-                        ),
-                      SizedBox(height: 20.0),
-                      ElevatedButton(
-                        onPressed: _signInWithEmailAndPassword,
-                        child: Text('Log In with Email'),
-                        style: ElevatedButton.styleFrom(
-                          padding: EdgeInsets.symmetric(vertical: 12.0),
-                        ),
-                      ),
-                      SizedBox(height: 20.0),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text("Can't log in? "),
-                          TextButton(
-                            onPressed: _navigateToResetPassword,
-                            child: Text('Reset password'),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 10.0),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text("Don't have an account? "),
-                          TextButton(
-                            onPressed: _navigateToRegister,
-                            child: Text('Create an account'),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+              ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }
