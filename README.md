@@ -1,16 +1,45 @@
-# test_app
+:
 
-A new Flutter project.
+📘 ExamEase – Exam Question Paper Portal
+ExamEase is a cross-platform Flutter application designed to simplify the process of accessing previous years' question papers for SSC, HSC, and Degree streams. Built with Firebase and Flutter, the app enables students to browse, search, and download papers categorized by stream, subject, and year.
 
-## Getting Started
+✨ Features
+🔐 User Authentication (Email / Mobile-based login & registration)
 
-This project is a starting point for a Flutter application.
+📚 Stream-wise Paper Access (Science, Commerce, Arts)
 
-A few resources to get you started if this is your first Flutter project:
+🗂️ Filter by Year & Subject
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+☁️ Firebase Integration for backend services
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+📱 Mobile-first UI with Flutter
+
+🔍 Search Functionality
+
+📤 Admin Upload Panel (with login)
+
+🔔 Notification Ready (for future updates)
+
+🛠️ Tech Stack
+Frontend: Flutter (Dart)
+
+Backend: Firebase (Auth, Firestore, Storage)
+
+Tools: Visual Studio Code, GitHub, Android Studio
+
+Some Screenshots are as follows
+
+<img width="951" height="430" alt="login page" src="https://github.com/user-attachments/assets/a0f98106-ed24-43dd-a159-6eaee8215776" />
+
+<img width="454" height="750" alt="Screenshot 2025-07-30 222740" src="https://github.com/user-attachments/assets/7b2050b0-0ff7-46ed-b601-fb6c04cbae8f" />
+
+<img width="445" height="737" alt="Screenshot 2025-07-30 222820" src="https://github.com/user-attachments/assets/6551e006-616c-4d4a-9ec7-cc9ee22e2a87" />
+
+<img width="444" height="729" alt="Screenshot 2025-07-30 223023" src="https://github.com/user-attachments/assets/b2311c61-2af1-4d11-ac5d-4fd8a57adcf9" />
+
+<img width="451" height="738" alt="Screenshot 2025-07-30 222907" src="https://github.com/user-attachments/assets/4bdfacc6-dae6-4653-b470-2570280eb063" />
+
+<img width="231" height="389" alt="register" src="https://github.com/user-<img width="445" height="731" alt="Screenshot 2025-07-30 223249" src="https://github.com/user-attachments/assets/08535b32-d687-4cae-a4d5-0df8ca450d4e" />
+
+attachments/assets/b9ab7ed8-8824-4707-8ef7-fa24bcd33aa5" />
+
