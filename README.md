@@ -1,5 +1,3 @@
-:
-
 📘 ExamEase – Exam Question Paper Portal
 ExamEase is a cross-platform Flutter application designed to simplify the process of accessing previous years' question papers for SSC, HSC, and Degree streams. Built with Firebase and Flutter, the app enables students to browse, search, and download papers categorized by stream, subject, and year.
 
