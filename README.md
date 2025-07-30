@@ -37,7 +37,6 @@ Some Screenshots are as follows
 
 <img width="451" height="738" alt="Screenshot 2025-07-30 222907" src="https://github.com/user-attachments/assets/4bdfacc6-dae6-4653-b470-2570280eb063" />
 
-<img width="231" height="389" alt="register" src="https://github.com/user-<img width="445" height="731" alt="Screenshot 2025-07-30 223249" src="https://github.com/user-attachments/assets/08535b32-d687-4cae-a4d5-0df8ca450d4e" />
+<img width="462" height="778" alt="Screenshot 2025-07-30 222110" src="https://github.com/user-attachments/assets/ec17d98c-5453-4276-b705-53446c8f0b2a" />
 
-attachments/assets/b9ab7ed8-8824-4707-8ef7-fa24bcd33aa5" />
-
+<img width="445" height="731" alt="Screenshot 2025-07-30 223249" src="https://github.com/user-attachments/assets/101bc672-28e8-475b-9c89-4c4088b4968d" />
